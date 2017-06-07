@@ -1,1 +1,21 @@
-<h1>You are home</h1>
+<DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+  <h1>Welcome to Cesar's Blog!</h1>
+  <h2>Latest Posts</h2>
+
+  {% for BlogPost in BlogPosts.all %}
+    {{ BlogPost.title }}
+    <br/>
+    {{ BlogPost.body | safe }}
+    <br/>
+    <br/>
+  {% endfor %}
+  </body>
+</html>
