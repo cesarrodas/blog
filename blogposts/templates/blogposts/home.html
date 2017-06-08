@@ -11,9 +11,14 @@
   <h2>Latest Posts</h2>
 
   {% for BlogPost in BlogPosts.all %}
-    {{ BlogPost.title }}
+    <h1>ID: {{ BlogPost.id }}</h1>
+    <a href="{% url 'posts_detail' BlogPost.id %}">{{ BlogPost.title }}</a>
     <br/>
-    {{ BlogPost.body | safe }}
+    {{ BlogPost.pub_date_pretty }}
+    <br/>
+    <img src="{{ BlogPost.image.url }}" />
+    <br/>
+    {{ BlogPost.summary | safe }}
     <br/>
     <br/>
   {% endfor %}
