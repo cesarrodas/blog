@@ -1,38 +1,32 @@
-<DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-  </head>
-  <body>
+{% extends 'beginning.html' %}
+{% block content %}
+<link rel="stylesheet" href="../../styles/main.css" />
+{{ BlogPost.title }}
+<br/>
+{{ BlogPost.pub_date_pretty }}
+<br/>
+<img src="{{ BlogPost.image.url }}" />
+<br/>
+{{ BlogPost.body | safe }}
+<br/>
+<br/>
 
-    {{ BlogPost.title }}
-    <br/>
-    {{ BlogPost.pub_date_pretty }}
-    <br/>
-    <img src="{{ BlogPost.image.url }}" />
-    <br/>
-    {{ BlogPost.body | safe }}
-    <br/>
-    <br/>
+<!-- This is where the comments will be available -->
+<form method="POST" action="{% url 'posts_detail' BlogPost.id %}">
+  {% csrf_token %}
+  <input type="TextField" name="username" placeholder="Username" />
+  <br/><br/>
+  <textarea rows="5" cols="50" name="comment" placeholder="Share your thoughts... There is no sign up!"></textarea>
+  <br/><br/>
+  <input type="hidden" name="post_id" value="{{ BlogPost.id }}" />
+  <button type="submit">Post Comment</button>
+</form>
 
-    <!-- This is where the comments will be available -->
-    <form method="POST" action="{% url 'posts_detail' BlogPost.id %}">
-      {% csrf_token %}
-      <input type="TextField" name="username" placeholder="Username" />
-      <br/><br/>
-      <textarea rows="5" cols="50" name="comment" placeholder="Share your thoughts..."></textarea>
-      <br/><br/>
-      <input type="hidden" name="post_id" value="{{ BlogPost.id }}" />
-      <button type="submit">Post Comment</button>
-    </form>
+<!-- This is where the comments will display -->
+{% for comment in Comments.all %}
+  <h1>{{ comment.username }}</h1>
+  <p>{{ comment.message }}</p>
+{% endfor %}
 
-    <!-- This is where the comments will display -->
-    {% for comment in Comments.all %}
-      <h1>{{ comment.username }}</h1>
-      <p>{{ comment.message }}</p>
-    {% endfor %}
-  </body>
-</html>
+
+{% endblock %}
