@@ -3,6 +3,11 @@ html, body {
   margin: 0;
   background-color: #f6f2ed;
 }
+body {
+  flex: 1;
+  margin: auto;
+}
+
 .large_header {
   width: 100%;
 }
@@ -13,9 +18,31 @@ html, body {
   background-color: #d2c6b8;
 }
 
+.separator-small {
+  width: 100%;
+  height: 4px;
+  background-color: #d2c6b8;
+}
+
 .flex-container {
+  background-color: #fcfbf9;
+  padding: 100px;
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
+  width: 60%;
   margin: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  width: 100%;
+}
+
+#post_header {
+  width: 100%;
+}
+
+.form, .formfiller {
+  width: 33%;
 }

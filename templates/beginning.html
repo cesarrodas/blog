@@ -19,7 +19,7 @@
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'styles/main.css' %}" >
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}?version=2" >
     <!-- "../../styles/main.css" -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
@@ -29,7 +29,7 @@
     <img class="large_header" src="{% static 'blogposts/header.jpg' %}" />
     <div class="separator"></div>
   <header/>
-  <body class="flex-container">
+  <body>
     <nav class="navbar navbar-inverse navbar-fixed-top sticky" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -52,7 +52,9 @@
         </div>
       </div>
     </nav>
+    <div class="flex-container">
 {% block content %}
 {% endblock %}
+    </div>
   </body>
 </html>

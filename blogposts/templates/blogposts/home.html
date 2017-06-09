@@ -4,13 +4,13 @@
 
 {% for BlogPost in BlogPosts.all %}
   <h1>ID: {{ BlogPost.id }}</h1>
-  <a href="{% url 'posts_detail' BlogPost.id %}">{{ BlogPost.title }}</a>
+  <h1><a href="{% url 'posts_detail' BlogPost.id %}">{{ BlogPost.title }}</a></h1>
   <br/>
   {{ BlogPost.pub_date_pretty }}
   <br/>
-  <img src="{{ BlogPost.image.url }}" />
+  <img id="post_header" src="{{ BlogPost.image.url }}" />
   <br/>
-  {{ BlogPost.summary | safe }}
+  {{ BlogPost.description }}
   <br/>
   <br/>
 {% endfor %}
